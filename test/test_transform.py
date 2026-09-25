@@ -38,3 +38,12 @@ def test_clean_data_parses_order_date():
     cleaned = clean_data(sample_raw_df())
 
     assert pd.api.types.is_datetime64_any_dtype(cleaned["order_date"])
+
+def test_aggregate_by_category_sums_revenue():
+    cleaned = clean_data(sample_raw_df())
+    summary = aggregate_by_category(cleaned)
+
+    toys_row = summary[summary["category"] == "Toys"].iloc[0]
+    # Amy: 3 * 5.0 = 15.0 (John's Toys row was dropped for missing customer... wait, John is Books)
+    assert toys_row["order_count"] == 1
+    assert toys_row["total_revenue"] == 15.0
