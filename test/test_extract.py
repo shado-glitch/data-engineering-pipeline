@@ -23,3 +23,8 @@ def test_extract_reads_all_rows(tmp_path):
         "unit_price",
         "order_date",
     ]
+
+def test_extract_missing_file_raises():
+    with pytest.raises(FileNotFoundError):
+        extract_data("does_not_exist.csv")
+
