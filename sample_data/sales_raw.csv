@@ -1,0 +1,11 @@
+order_id,customer,category,quantity,unit_price,order_date
+1001,Thabo M,Electronics,2,499.99,2026-01-05
+1002,Lindiwe K,Groceries,5,12.50,2026-01-05
+1003,Sipho N,Electronics,,899.00,2026-01-06
+1004,Aisha P,Clothing,3,150.00,2026-01-06
+1005,Farai T,Groceries,10,8.75,2026-01-07
+1006,,Clothing,1,220.00,2026-01-07
+1007,Nomvula D,Electronics,1,1200.00,2026-01-08
+1008,Kabelo S,Groceries,4,15.00,2026-01-08
+1009,Precious L,Clothing,2,175.50,2026-01-09
+1010,Thabo M,Electronics,3,499.99,2026-01-09
