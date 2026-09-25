@@ -27,3 +27,9 @@ def test_clean_data_fills_missing_quantity_with_one():
 
     john_row = cleaned[cleaned["customer"] == "John"].iloc[0]
     assert john_row["quantity"] == 1
+
+def test_clean_data_computes_total_price():
+    cleaned = clean_data(sample_raw_df())
+
+    jane_row = cleaned[cleaned["customer"] == "Jane"].iloc[0]
+    assert jane_row["total_price"] == 10.0  # 1 * 10.0
