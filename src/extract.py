@@ -1,0 +1,11 @@
+"""
+Extract stage
+-------------
+Responsible for ONE thing: pulling raw data from a source (here, a CSV
+file) into a pandas DataFrame, with no cleaning or business logic.
+
+Keeping extract/transform/load in separate modules is the classic ETL
+pattern: each stage can be tested, replaced, or scaled independently
+(e.g. swap this CSV read for a database query or an API call later
+without touching transform.py or load.py).
+"""
