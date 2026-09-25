@@ -21,3 +21,9 @@ def test_clean_data_drops_missing_customer():
     # the row with customer=None should be dropped
     assert cleaned["customer"].isna().sum() == 0
     assert len(cleaned) == 3
+
+def test_clean_data_fills_missing_quantity_with_one():
+    cleaned = clean_data(sample_raw_df())
+
+    john_row = cleaned[cleaned["customer"] == "John"].iloc[0]
+    assert john_row["quantity"] == 1
