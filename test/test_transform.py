@@ -47,3 +47,10 @@ def test_aggregate_by_category_sums_revenue():
     # Amy: 3 * 5.0 = 15.0 (John's Toys row was dropped for missing customer... wait, John is Books)
     assert toys_row["order_count"] == 1
     assert toys_row["total_revenue"] == 15.0
+
+def test_aggregate_by_category_sorted_descending():
+    cleaned = clean_data(sample_raw_df())
+    summary = aggregate_by_category(cleaned)
+
+    revenues = summary["total_revenue"].tolist()
+    assert revenues == sorted(revenues, reverse=True)
