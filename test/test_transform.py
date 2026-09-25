@@ -14,3 +14,10 @@ def sample_raw_df():
             "order_date": ["2026-01-01", "2026-01-02", "2026-01-03", "2026-01-04"],
         }
     )
+
+def test_clean_data_drops_missing_customer():
+    cleaned = clean_data(sample_raw_df())
+
+    # the row with customer=None should be dropped
+    assert cleaned["customer"].isna().sum() == 0
+    assert len(cleaned) == 3
