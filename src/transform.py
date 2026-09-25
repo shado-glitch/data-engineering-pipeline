@@ -37,3 +37,27 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
     clean["order_date"] = pd.to_datetime(clean["order_date"])
 
     return clean.reset_index(drop=True)
+
+def aggregate_by_category(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Summarise total revenue and order count per product category.
+
+    Parameters
+    ----------
+    df : pd.DataFrame
+        Cleaned data as returned by clean_data().
+
+    Returns
+    -------
+    pd.DataFrame
+        One row per category with columns: category, order_count,
+        total_revenue.
+    """
+    summary = (
+        df.groupby("category")
+        .agg(order_count=("order_id", "count"), total_revenue=("total_price", "sum"))
+        .reset_index()
+        .sort_values("total_revenue", ascending=False)
+        .reset_index(drop=True)
+    )
+    return summary
