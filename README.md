@@ -43,7 +43,6 @@ data-engineering-pipeline/
 ## Setup
 
 ```bash
-git clone <your-repo-url>
 cd data-engineering-pipeline
 python -m venv venv
 source venv/bin/activate        # Windows: venv\Scripts\activate
