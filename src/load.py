@@ -29,3 +29,14 @@ def load_to_sqlite(df: pd.DataFrame, db_path: str, table_name: str) -> None:
         connection.commit()
     finally:
         connection.close()
+
+def read_table(db_path: str, table_name: str) -> pd.DataFrame:
+    """
+    Read a table back from SQLite. Mainly used by tests and for
+    verifying what actually landed in the database.
+    """
+    connection = sqlite3.connect(db_path)
+    try:
+        return pd.read_sql(f"SELECT * FROM {table_name}", connection)
+    finally:
+        connection.close()
